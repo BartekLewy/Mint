@@ -30,16 +30,7 @@ class Project
     public function __construct(string $name, string $shortcut, \DateTimeInterface $createdAt, \DateTimeInterface $updatedAt = null)
     {
         $this->id = Uuid::uuid4();
-
-        if (mb_strlen($name) < self::MIN_LENGTH_NAME) {
-            throw new InvalidProjectNameException('Project name is too short');
-        }
-
-        if (mb_strlen($name) > self::MAX_LENGTH_NAME) {
-            throw new InvalidProjectNameException('Project name is too long');
-        }
-
-        $this->name = $name;
+        $this->setName($name);
         $this->shortcut = $shortcut;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
@@ -68,5 +59,29 @@ class Project
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
+    }
+
+    private function setName(string $name): void
+    {
+        if (mb_strlen($name) < self::MIN_LENGTH_NAME) {
+            throw new InvalidProjectNameException('Project name is too short');
+        }
+
+        if (mb_strlen($name) > self::MAX_LENGTH_NAME) {
+            throw new InvalidProjectNameException('Project name is too long');
+        }
+
+        $this->name = $name;
+    }
+
+    private function changeUpdatedAt(): void
+    {
+        $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    public function changeName($name): void
+    {
+        $this->setName($name);
+        $this->changeUpdatedAt();
     }
 }
