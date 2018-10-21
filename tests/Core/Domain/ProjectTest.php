@@ -3,6 +3,7 @@
 namespace App\Tests\Core\Domain;
 
 use App\Core\Domain\Project;
+use App\Core\Domain\Task;
 use App\Core\Domain\Exception\InvalidProjectNameException;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Assert;
@@ -17,6 +18,8 @@ class ProjectTests extends TestCase
         Assert::assertNotNull($project->getId());
         Assert::assertEquals('Web Application', $project->getName());
         Assert::assertEquals('WEBAPP', $project->getShortcut());
+        Assert::assertInstanceOf(\DateTimeInterface::class, $project->getCreatedAt());
+        Assert::assertNull($project->getUpdatedAt());
     }
 
     /**
