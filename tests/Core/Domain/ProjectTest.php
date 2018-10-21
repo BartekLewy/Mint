@@ -19,9 +19,17 @@ class ProjectTests extends TestCase
         Assert::assertEquals('WEBAPP', $project->getShortcut());
     }
 
-    public function testShouldThrowInvalidProjectNameException()
+    /**
+     * @dataProvider invalidProjectNamesDataProvider
+     */
+    public function testShouldThrowInvalidProjectNameException($name)
     {
         $this->expectException(InvalidProjectNameException::class);
-        $project = new Project('', 'App');
+        $project = new Project($name, 'App');
+    }
+
+    public function invalidProjectNamesDataProvider(): array
+    {
+        return [['', 'Inva', 'It is not the best name for project cause it is to long']];
     }
 }
