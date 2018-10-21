@@ -21,7 +21,13 @@ class Project
     /** @var string */
     private $shortcut;
 
-    public function __construct(string $name, string $shortcut)
+    /** @var \DateTimeInterface */
+    private $createdAt;
+
+    /** @var \DateTimeInterface */
+    private $updatedAt;
+
+    public function __construct(string $name, string $shortcut, \DateTimeInterface $createdAt, \DateTimeInterface $updatedAt = null)
     {
         $this->id = Uuid::uuid4();
 
@@ -35,6 +41,8 @@ class Project
 
         $this->name = $name;
         $this->shortcut = $shortcut;
+        $this->createdAt = $createdAt;
+        $this->updatedAt = $updatedAt;
     }
 
     public function getId(): UuidInterface
@@ -50,5 +58,15 @@ class Project
     public function getShortcut(): string
     {
         return $this->shortcut;
+    }
+
+    public function getCreatedAt(): \DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
     }
 }

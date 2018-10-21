@@ -13,7 +13,7 @@ class ProjectTests extends TestCase
 {
     public function testShouldCreateProject()
     {
-        $project = new Project('Web Application', 'WEBAPP');
+        $project = new Project('Web Application', 'WEBAPP', new \DateTimeImmutable());
 
         Assert::assertNotNull($project->getId());
         Assert::assertEquals('Web Application', $project->getName());
@@ -28,7 +28,7 @@ class ProjectTests extends TestCase
     public function testShouldThrowInvalidProjectNameException($name)
     {
         $this->expectException(InvalidProjectNameException::class);
-        $project = new Project($name, 'App');
+        $project = new Project($name, 'App', new \DateTimeImmutable());
     }
 
     public function invalidProjectNamesDataProvider(): array
