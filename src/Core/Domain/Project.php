@@ -68,11 +68,11 @@ class Project
 
     private function setName(string $name): void
     {
-        if (mb_strlen($name) < self::MIN_LENGTH_NAME) {
+        if (mb_strlen($name) <= self::MIN_LENGTH_NAME) {
             throw new InvalidProjectNameException('Project name is too short');
         }
 
-        if (mb_strlen($name) > self::MAX_LENGTH_NAME) {
+        if (mb_strlen($name) >= self::MAX_LENGTH_NAME) {
             throw new InvalidProjectNameException('Project name is too long');
         }
 
