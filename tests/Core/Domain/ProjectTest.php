@@ -7,6 +7,7 @@ use App\Core\Domain\Task;
 use App\Core\Domain\Exception\InvalidProjectNameException;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Assert;
+use Ramsey\Uuid\Uuid;
 
 
 class ProjectTests extends TestCase
@@ -57,6 +58,6 @@ class ProjectTests extends TestCase
 
     private static function createValidProject(): Project
     {
-        return new Project('Web Application', 'WEBAPP', new \DateTimeImmutable());
+        return new Project(Uuid::uuid4(), 'Web Application', 'WEBAPP', new \DateTimeImmutable());
     }
 }
