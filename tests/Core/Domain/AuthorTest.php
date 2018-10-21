@@ -3,6 +3,7 @@
 namespace App\Tests\Core\Domain;
 
 use App\Core\Domain\Author;
+use App\Core\Domain\ValueObject\Email;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
