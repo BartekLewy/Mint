@@ -28,13 +28,14 @@ class Project
     private $updatedAt;
 
     public function __construct(
+        UuidInterface $id,
         string $name,
         string $shortcut,
         \DateTimeInterface $createdAt,
         \DateTimeInterface $updatedAt = null
     )
     {
-        $this->id = Uuid::uuid4();
+        $this->id = $id;
         $this->setName($name);
         $this->shortcut = $shortcut;
         $this->createdAt = $createdAt;

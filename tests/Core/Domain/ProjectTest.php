@@ -29,7 +29,7 @@ class ProjectTests extends TestCase
     public function testShouldThrowInvalidProjectNameException($name)
     {
         $this->expectException(InvalidProjectNameException::class);
-        $project = new Project($name, 'App', new \DateTimeImmutable());
+        $project = new Project(Uuid::uuid4(), $name, 'App', new \DateTimeImmutable());
     }
 
     public function invalidProjectNamesDataProvider(): array
