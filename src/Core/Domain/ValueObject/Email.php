@@ -1,5 +1,5 @@
 <?php
-declare(use_strict=1);
+declare(strict_types=1);
 
 namespace App\Core\Domain\ValueObject;
 
