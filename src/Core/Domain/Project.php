@@ -27,7 +27,12 @@ class Project
     /** @var \DateTimeInterface */
     private $updatedAt;
 
-    public function __construct(string $name, string $shortcut, \DateTimeInterface $createdAt, \DateTimeInterface $updatedAt = null)
+    public function __construct(
+        string $name,
+        string $shortcut,
+        \DateTimeInterface $createdAt,
+        \DateTimeInterface $updatedAt = null
+    )
     {
         $this->id = Uuid::uuid4();
         $this->setName($name);
