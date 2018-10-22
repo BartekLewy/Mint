@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Core\Domain;
 
 use Ramsey\Uuid\UuidInterface;
-use phpDocumentor\Reflection\Types\Null_;
 
 class Task
 {
