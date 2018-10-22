@@ -1,4 +1,5 @@
 <?php
+declare (strict_types = 1);
 
 namespace App\Tests\Core\Domain;
 
@@ -11,7 +12,7 @@ use Ramsey\Uuid\UuidInterface;
 
 class StatusTest extends TestCase
 {
-    public function testShouldCreateStatus()
+    public function testShouldCreateStatus(): void
     {
         $uuid = Uuid::uuid4();
         $status = new Status($uuid, 'new');

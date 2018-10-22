@@ -1,4 +1,5 @@
 <?php
+declare (strict_types = 1);
 
 namespace App\Tests\Core\Domain;
 
@@ -12,7 +13,7 @@ use Ramsey\Uuid\Uuid;
 
 class ProjectTests extends TestCase
 {
-    public function testShouldCreateProject()
+    public function testShouldCreateProject(): void
     {
         $project = self::createValidProject();
 
@@ -26,7 +27,7 @@ class ProjectTests extends TestCase
     /**
      * @dataProvider invalidProjectNamesDataProvider
      */
-    public function testShouldThrowInvalidProjectNameException($name)
+    public function testShouldThrowInvalidProjectNameException($name): void
     {
         $this->expectException(InvalidProjectNameException::class);
         $project = new Project(Uuid::uuid4(), $name, 'App', new \DateTimeImmutable());
@@ -37,7 +38,7 @@ class ProjectTests extends TestCase
         return [['', 'Inva', 'It is not the best name for project cause it is to long']];
     }
 
-    public function testShouldChangeProjectName()
+    public function testShouldChangeProjectName(): void
     {
         $project = self::createValidProject();
         $project->changeName('Web Managment Application');
@@ -49,7 +50,7 @@ class ProjectTests extends TestCase
     /**
      * @dataProvider invalidProjectNamesDataProvider
      */
-    public function testShouldThrowExceptionWhileChangingProjectName($name)
+    public function testShouldThrowExceptionWhileChangingProjectName($name): void
     {
         $this->expectException(InvalidProjectNameException::class);
         $project = self::createValidProject();

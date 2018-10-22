@@ -1,4 +1,5 @@
 <?php
+declare (strict_types = 1);
 
 namespace App\Tests\Core\Domain;
 
@@ -14,7 +15,7 @@ use Ramsey\Uuid\UuidInterface;
 
 class TaskTest extends TestCase
 {
-    public function testShouldCreateTask()
+    public function testShouldCreateTask(): void
     {
         $createdAt = new \DateTimeImmutable();
         $status = new Status(Uuid::uuid4(), 'new');

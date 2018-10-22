@@ -1,4 +1,5 @@
 <?php
+declare (strict_types = 1);
 
 namespace App\Tests\Core\Domain;
 
@@ -11,7 +12,7 @@ use Ramsey\Uuid\Uuid;
 
 class AuthorTest extends TestCase
 {
-    public function testShouldCreateAuthor()
+    public function testShouldCreateAuthor(): void
     {
         $uuid = Uuid::uuid4();
         $author = new Author($uuid, 'Bartosz Lewandowski', new Email('test@test.test'));
