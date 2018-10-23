@@ -47,7 +47,7 @@ class ProjectServiceTest extends TestCase
 
     public function testShouldThrowDuplicateDetected()
     {
-        $this->expectException(DuplicateDetectedExcepton::class);
+        $this->expectException(DuplicateDetectedException::class);
 
         $this->projectReadRepositoryMock->method('exists')->willReturn(true);
         $this->systemUnderTest->create(new ProjectDTO('Project Name', 'SHORT'));
